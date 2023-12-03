@@ -43,8 +43,8 @@ namespace AdventOfCode.Day2
 
             foreach (var round in roundSplit)
             {
-               string[] resultsSplit = round.Split(',');
-               roundList.Add(getRoundResults(resultsSplit));
+                string[] resultsSplit = round.Split(',');
+                roundList.Add(getRoundResults(resultsSplit));
             }
 
             output[gameNum] = roundList;

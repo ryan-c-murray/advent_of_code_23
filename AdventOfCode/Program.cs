@@ -16,9 +16,11 @@ switch (DayRunner)
         break;
     case "DayTwo":
         DayTwo dayTwo = new DayTwo();
-
+        answer = dayTwo.GetAnswer();
         break;
 }
+
+Console.WriteLine(answer);
 
 
 

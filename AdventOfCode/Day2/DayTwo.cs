@@ -9,6 +9,15 @@ namespace AdventOfCode.Day2
 
         public Dictionary<string,Dictionary<string,int>> SumData = new();
 
+        public List<int> ValidGames = new();
+
+        public Dictionary<string,int> puzzleDict = new()
+        {
+            {"red",12},
+            {"green",13},
+            {"blue",14}
+        };
+
 
         public DayTwo()
         {
@@ -17,7 +26,45 @@ namespace AdventOfCode.Day2
 
             SumData = getSumData(InputData);
 
+            ValidGames = getValidGames();
+
+
+
             Console.WriteLine("done");
+        }
+
+        public int GetAnswer()
+        {
+            return ValidGames.Sum();
+        }
+        private List<int> getValidGames()
+        {
+            List<int> validGames = new();
+
+            foreach (var gameResults in InputData)
+            {
+                if (gameIsValid(gameResults.Value))
+                {
+                    validGames.Add(int.Parse(gameResults.Key));
+                }   
+            }
+
+            return validGames;
+        }
+
+        private bool gameIsValid(List<Dictionary<string,int>> rounds)
+        {
+
+            foreach (var round in rounds)
+            {
+                if (round["red"] >puzzleDict["red"]) { return false; }
+                
+                if (round["blue"] > puzzleDict["blue"]) { return false; }
+                
+                if (round["green"] > puzzleDict["green"]) { return false; }
+            }
+            
+            return true;
         }
 
         private Dictionary<string,Dictionary<string,int>> getSumData(Dictionary<string,List<Dictionary<string,int>>> m_inputData)
