@@ -67,7 +67,7 @@ namespace AdventOfCode.Day1
 
             string returnString = string.Empty;
 
-            Dictionary<string,int> digitIndex = new Dictionary<string,int>();
+            Dictionary<int,string> digitIndex = new Dictionary<int,string>();
 
             foreach (var mapper in charMap)
             {
@@ -76,13 +76,13 @@ namespace AdventOfCode.Day1
                 {
                     foreach (int indexes in foundIndexes){
                         
-                        digitIndex.Add(mapper.Value,indexes);
+                        digitIndex.Add(indexes,mapper.Value);
                     }
                 }
             }
             
 
-            var sortedDigitIndex = from entry in digitIndex orderby int.Parse(entry.Value.ToString()) ascending select entry.Key;
+            var sortedDigitIndex = from entry in digitIndex orderby int.Parse(entry.Key.ToString()) ascending select entry.Value;
 
             foreach (var item in sortedDigitIndex)
             {
