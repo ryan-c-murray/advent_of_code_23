@@ -11,15 +11,17 @@ int answer;
 switch (DayRunner) 
 {
     case "DayOne":
-        DayOne dayOne = new DayOne();
+        DayOne dayOne = new();
         answer= dayOne.GetAnswer();
         break;
     case "DayTwo":
-        DayTwo dayTwo = new DayTwo();
+        DayTwo dayTwo = new();
         answer = dayTwo.GetAnswer();
         break;
     case "DayThree":
-        DayThree dayThree = new DayThree();
+        DayThree dayThree = new();
+
+        break;
 }
 
 Console.WriteLine(answer);

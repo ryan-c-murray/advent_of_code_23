@@ -6,9 +6,9 @@ namespace AdventOfCode
     {
         private const string inputPath = "/Users/Ryan/csharp_scrips/AdventOfCode/advent_of_code_23/AdventOfCode/Day2/Day2PuzzleInput.txt";
 
-        public Dictionary<string,List<Dictionary<string,int>>> GetInput()
+        public static Dictionary<string,List<Dictionary<string,int>>> GetInput()
         {
-            StreamReader streamReader = new StreamReader(inputPath);
+            StreamReader streamReader = new(inputPath);
 
             Dictionary<string,List<Dictionary<string,int>>> gamesDict = new();
 
@@ -17,7 +17,7 @@ namespace AdventOfCode
             
             while ((fileLine = streamReader.ReadLine()) != null)
             {
-                Dictionary<string,List<Dictionary<string,int>>> addDict = parseFileLine(fileLine);
+                Dictionary<string,List<Dictionary<string,int>>> addDict = ParseFileLine(fileLine);
 
                 foreach (var keyValuePair in addDict)
                 {
@@ -28,7 +28,7 @@ namespace AdventOfCode
             return gamesDict;
         }
 
-        private Dictionary<string,List<Dictionary<string,int>>> parseFileLine(string m_fileLine)
+        private static Dictionary<string,List<Dictionary<string,int>>> ParseFileLine(string m_fileLine)
         {
             Dictionary<string,List<Dictionary<string,int>>> output = new();
 
@@ -44,7 +44,7 @@ namespace AdventOfCode
             foreach (var round in roundSplit)
             {
                 string[] resultsSplit = round.Split(',');
-                roundList.Add(getRoundResults(resultsSplit));
+                roundList.Add(GetRoundResults(resultsSplit));
             }
 
             output[gameNum] = roundList;
@@ -52,7 +52,7 @@ namespace AdventOfCode
             return output;
         }
 
-        private Dictionary<string,int> getRoundResults(string[] m_round)
+        private static Dictionary<string,int> GetRoundResults(string[] m_round)
         {
             Dictionary<string,int> roundDict = new() 
             {

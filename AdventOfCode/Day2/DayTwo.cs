@@ -23,14 +23,14 @@ namespace AdventOfCode
 
         public DayTwo()
         {
-            DayTwoInputParse inputParser = new DayTwoInputParse();
-            InputData = inputParser.GetInput();
+            DayTwoInputParse inputParser = new();
+            InputData = DayTwoInputParse.GetInput();
 
-            MaxData = getMaxData(InputData);
+            MaxData = GetMaxData(InputData);
 
-            ValidGames = getValidGames();
+            ValidGames = GetValidGames();
 
-            CubedGames = cubeMaxGames();
+            CubedGames = CubeMaxGames();
 
             Console.WriteLine("done");
         }
@@ -40,7 +40,7 @@ namespace AdventOfCode
             return CubedGames.Sum();
         }
 
-        private List<int> cubeMaxGames()
+        private List<int> CubeMaxGames()
         {
             List<int> cubedGameValues = new();
             
@@ -55,13 +55,13 @@ namespace AdventOfCode
             return cubedGameValues;
         }
 
-        private List<int> getValidGames()
+        private List<int> GetValidGames()
         {
             List<int> validGames = new();
 
             foreach (var gameResults in InputData)
             {
-                if (gameIsValid(gameResults.Value))
+                if (GameIsValid(gameResults.Value))
                 {
                     validGames.Add(int.Parse(gameResults.Key));
                 }   
@@ -70,7 +70,7 @@ namespace AdventOfCode
             return validGames;
         }
 
-        private bool gameIsValid(List<Dictionary<string,int>> rounds)
+        private bool GameIsValid(List<Dictionary<string, int>> rounds)
         {
             foreach (var round in rounds)
             {
@@ -84,19 +84,19 @@ namespace AdventOfCode
             return true;
         }
 
-        private Dictionary<string,Dictionary<string,int>> getMaxData(Dictionary<string,List<Dictionary<string,int>>> m_inputData)
+        private static Dictionary<string, Dictionary<string, int>> GetMaxData(Dictionary<string, List<Dictionary<string, int>>> m_inputData)
         {
             Dictionary<string,Dictionary<string,int>> sumData = new();
 
             foreach (var gamePair in m_inputData)
             {
-                sumData[gamePair.Key] = maxList(gamePair.Value);
+                sumData[gamePair.Key] = MaxList(gamePair.Value);
             }
             
             return sumData;
         }
 
-        private Dictionary<string,int> maxList(List<Dictionary<string,int>> roundList)
+        private static Dictionary<string, int> MaxList(List<Dictionary<string, int>> roundList)
         {
             Dictionary<string,int> roundSum = new()
             {

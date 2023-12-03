@@ -29,14 +29,14 @@ namespace AdventOfCode
         {
             word = m_word;
 
-            string charMappedWord = stringDigitParser(word);
+            string charMappedWord = StringDigitParser(word);
 
-            ReturnNum = firstLastNum(charMappedWord);
+            ReturnNum = FirstLastNum(charMappedWord);
 
         }
 
 
-        private string stringDigitParser(string m_word)
+        private string StringDigitParser(string m_word)
         {
             string output=string.Empty;
             
@@ -55,14 +55,14 @@ namespace AdventOfCode
                 }
                 else
                 {
-                    output+=stringDigitParse(wordPart);
+                    output+=StringDigitParse(wordPart);
                 }
             }
 
             return output;
         }
 
-        private string stringDigitParse(string loopStr)
+        private string StringDigitParse(string loopStr)
         {
 
             string returnString = string.Empty;
@@ -71,7 +71,7 @@ namespace AdventOfCode
 
             foreach (var mapper in charMap)
             {
-                List<int> foundIndexes = digitReplace(mapper.Key,loopStr);
+                List<int> foundIndexes = DigitReplace(mapper.Key,loopStr);
                 if (foundIndexes.Count != 0)
                 {
                     foreach (int indexes in foundIndexes){
@@ -92,7 +92,7 @@ namespace AdventOfCode
             return returnString;
         }
 
-        private List<int> digitReplace(string m_mapper,string m_loopStr)
+        private List<int> DigitReplace(string m_mapper,string m_loopStr)
         {
             List<int> foundIndexes = new List<int>();
 
@@ -109,7 +109,7 @@ namespace AdventOfCode
             }
         }
 
-        private int firstLastNum(string m_word)
+        private int FirstLastNum(string m_word)
         {
             int outputNum;
 
