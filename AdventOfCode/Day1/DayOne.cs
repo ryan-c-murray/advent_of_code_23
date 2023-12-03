@@ -5,7 +5,7 @@ namespace AdventOfCode.Day1
 {
     public class DayOne
     {
-        private const string inputPath = "C:\\Users\\rcmur\\source\\repos\\AdventOfCode\\AdventOfCode\\Day1\\PuzzleInput - Copy.txt";
+        private const string inputPath = "/Users/Ryan/csharp_scrips/AdventOfCode/advent_of_code_23/AdventOfCode/Day1/PuzzleInput.txt";
 
         private readonly List<string> puzzleInput;
 
