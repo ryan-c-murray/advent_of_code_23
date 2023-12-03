@@ -3,7 +3,7 @@ using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 
-namespace AdventOfCode.Day1
+namespace AdventOfCode
 {
     public class CalibrationValue
     {

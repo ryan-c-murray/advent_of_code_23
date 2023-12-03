@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace AdventOfCode.Day2
+namespace AdventOfCode
 {
     public class DayTwoInputParse
     {

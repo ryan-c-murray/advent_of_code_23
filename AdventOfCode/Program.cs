@@ -1,8 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 
-using AdventOfCode.Day1;
-using AdventOfCode.Day2;
+using AdventOfCode;
+
 
 const string DayRunner="DayTwo";
 
@@ -18,6 +18,8 @@ switch (DayRunner)
         DayTwo dayTwo = new DayTwo();
         answer = dayTwo.GetAnswer();
         break;
+    case "DayThree":
+        DayThree dayThree = new DayThree();
 }
 
 Console.WriteLine(answer);
