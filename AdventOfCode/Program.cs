@@ -2,21 +2,25 @@
 
 
 using AdventOfCode.Day1;
+using AdventOfCode.Day2;
 
-DayOne dayOne = new DayOne();
+const string DayRunner="DayTwo";
 
-int dayOneAnswer = dayOne.GetAnswer();
+int answer;
 
-Console.WriteLine(dayOneAnswer);
+switch (DayRunner) 
+{
+    case "DayOne":
+        DayOne dayOne = new DayOne();
+        answer= dayOne.GetAnswer();
+        break;
+    case "DayTwo":
+        DayTwo dayTwo = new DayTwo();
+
+        break;
+}
 
 
-// using AdventOfCode.Day1;
 
-// string testString = "onetwone";
-
-// CalibrationValue testCalibration = new CalibrationValue(testString);
-
-
-// Console.WriteLine(testCalibration.ReturnNum);
 
 
