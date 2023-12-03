@@ -1,4 +1,6 @@
 ﻿
+using System.Reflection.Metadata;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 
 namespace AdventOfCode.Day1
@@ -53,14 +55,14 @@ namespace AdventOfCode.Day1
                 }
                 else
                 {
-                    output+=replaceStringDigits(wordPart);
+                    output+=stringDigitParse(wordPart);
                 }
             }
 
             return output;
         }
 
-        private string replaceStringDigits(string loopStr)
+        private string stringDigitParse(string loopStr)
         {
 
             string returnString = string.Empty;
@@ -69,15 +71,16 @@ namespace AdventOfCode.Day1
 
             foreach (var mapper in charMap)
             {
-                if (loopStr.Contains(mapper.Key))
+                List<int> foundIndexes = digitReplace(mapper.Key,loopStr);
+                if (foundIndexes.Count != 0)
                 {
-                    if (loopStr.IndexOf(mapper.Key) == loopStr.LastIndexOf(mapper.Key))
-                    {
-                        digitIndex.Add(mapper.Value, loopStr.IndexOf(mapper.Key));
+                    foreach (int indexes in foundIndexes){
+                        
+                        digitIndex.Add(mapper.Value,indexes);
                     }
-                    
                 }
             }
+            
 
             var sortedDigitIndex = from entry in digitIndex orderby int.Parse(entry.Value.ToString()) ascending select entry.Key;
 
@@ -89,14 +92,28 @@ namespace AdventOfCode.Day1
             return returnString;
         }
 
+        private List<int> digitReplace(string m_mapper,string m_loopStr)
+        {
+            List<int> foundIndexes = new List<int>();
+
+            for (int i=0;;i+=m_mapper.Length)
+            {
+                i = m_loopStr.IndexOf(m_mapper,i);
+
+                if (i==-1)
+                {
+                    return foundIndexes;
+                }
+
+                foundIndexes.Add(i);
+            }
+        }
+
         private int firstLastNum(string m_word)
         {
-
             int outputNum;
 
-            
             outputNum = int.Parse(m_word[0].ToString() + m_word[m_word.Length - 1].ToString());
-            
 
             return outputNum;
         }
