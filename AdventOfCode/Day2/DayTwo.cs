@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace AdventOfCode
+namespace AdventOfCode.Day2
 {
     public class DayTwo
     {      
@@ -23,7 +23,7 @@ namespace AdventOfCode
 
         public DayTwo()
         {
-            DayTwoInputParse inputParser = new();
+            _ = new DayTwoInputParse();
             InputData = DayTwoInputParse.GetInput();
 
             MaxData = GetMaxData(InputData);

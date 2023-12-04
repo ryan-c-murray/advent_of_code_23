@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace AdventOfCode
+namespace AdventOfCode.Day2
 {
     public class DayTwoInputParse
     {
@@ -36,7 +36,7 @@ namespace AdventOfCode
             
             string gameNum = gameSplit[0].Replace("Game ",string.Empty);
 
-            string[] roundSplit = gameSplit[gameSplit.Length-1].Split(';');
+            string[] roundSplit = gameSplit[^1].Split(';');
 
 
             List<Dictionary<string,int>> roundList = new();

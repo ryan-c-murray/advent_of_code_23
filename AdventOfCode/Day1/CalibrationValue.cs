@@ -3,7 +3,7 @@ using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 
-namespace AdventOfCode
+namespace AdventOfCode.Day1
 {
     public class CalibrationValue
     {
@@ -12,7 +12,7 @@ namespace AdventOfCode
 
         public int ReturnNum;
 
-        private readonly Dictionary<string, string> charMap = new Dictionary<string, string>()
+        private readonly Dictionary<string, string> charMap = new()
         {
             {"one", "1"},
             {"two", "2"},
@@ -40,7 +40,7 @@ namespace AdventOfCode
         {
             string output=string.Empty;
             
-            Regex regex = new Regex(@"(\d)");
+            Regex regex = new(@"(\d)");
 
             string[] splitWord = regex.Split(m_word);
 
@@ -67,7 +67,7 @@ namespace AdventOfCode
 
             string returnString = string.Empty;
 
-            Dictionary<int,string> digitIndex = new Dictionary<int,string>();
+            Dictionary<int,string> digitIndex = new();
 
             foreach (var mapper in charMap)
             {
@@ -92,9 +92,9 @@ namespace AdventOfCode
             return returnString;
         }
 
-        private List<int> DigitReplace(string m_mapper,string m_loopStr)
+        private static List<int> DigitReplace(string m_mapper, string m_loopStr)
         {
-            List<int> foundIndexes = new List<int>();
+            List<int> foundIndexes = new();
 
             for (int i=0;;i+=m_mapper.Length)
             {
@@ -109,11 +109,11 @@ namespace AdventOfCode
             }
         }
 
-        private int FirstLastNum(string m_word)
+        private static int FirstLastNum(string m_word)
         {
             int outputNum;
 
-            outputNum = int.Parse(m_word[0].ToString() + m_word[m_word.Length - 1].ToString());
+            outputNum = int.Parse(m_word[0].ToString() + m_word[^1].ToString());
 
             return outputNum;
         }
